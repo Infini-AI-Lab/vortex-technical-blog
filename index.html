@@ -33,6 +33,15 @@
     }
     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
   </style>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+></script>
+
 </head>
 <body class="bg-slate-50">
 
@@ -71,6 +80,7 @@
           Clock: "M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM12 6v6l4 2",
           Activity: "M22 12h-4l-3 9L9 3l-3 9H2",
           Brain: "M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-4zM14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-4z",
+          FileText: "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M10 11h6M10 15h6M10 19h4"
         };
         return (
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
@@ -84,10 +94,6 @@
       };
 
       // --- Data ---
-      const performanceData = [
-        { name: 'H100 GPU', baseline: 1.0, vortex: 2.8, gain: '2.8x' },
-        { name: 'A40 GPU', baseline: 1.0, vortex: 4.0, gain: '4.0x' },
-      ];
 
       // --- Components ---
       const SectionHeader = ({ title }) => (
@@ -140,32 +146,283 @@
             <ul className="text-sm text-slate-600 space-y-2">
               <li className="flex gap-2"><span className="text-green-500">✓</span> Stable Platform</li>
               <li className="flex gap-2"><span className="text-red-500">✗</span> Slow Adoption</li>
-              <li className="flex gap-2"><span className="text-red-500">✗</span> Limited Algo Support</li>
+              <li className="flex gap-2"><span className="text-red-500">✗</span> Limited Algorithm Support</li>
             </ul>
           </div>
         </div>
       );
-
-      const CoreChallenges = () => (
-        <div className="my-10 space-y-4">
-          {[
-            { title: "Defining what to cache", desc: "How to manage intermediate structures like centroids?", icon: "Database" },
-            { title: "Dispatching the right ops", desc: "Coordinating custom ops (mv, topk) with standard kernels.", icon: "GitBranch" },
-            { title: "Leveraging Infrastructure", desc: "Plugging into paged attention and memory managers.", icon: "Server" }
-          ].map((item, i) => (
-            <div key={i} className="flex items-start gap-4 p-4 rounded-lg bg-slate-50 border border-slate-100">
-              <div className="bg-white p-2 rounded shadow-sm">
-                <Icon name={item.icon} className="w-5 h-5 text-blue-500" />
-              </div>
-              <div>
-                <h4 className="font-bold text-slate-800 text-sm">{item.title}</h4>
-                <p className="text-sm text-slate-600">{item.desc}</p>
-              </div>
+      
+ const DeepLearningArchitecture = () => (
+    // Outer Container (Mimics Terminal Window)
+    <div className="my-10 bg-slate-900 rounded-xl shadow-2xl ring-1 ring-slate-900/5">
+        
+        {/* Title Bar */}
+        <div className="bg-slate-800/50 px-6 py-3 border-b border-slate-700/50 flex justify-between items-center">
+            <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wide">Deep Learning System</h3>
+            <div className="flex gap-1.5">
+                <div className="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
+                <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
+                <div className="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
             </div>
-          ))}
         </div>
-      );
+        
+        {/* Content Area */}
+        <div className="p-8 relative">
+            <div className="flex flex-col gap-8 max-w-lg mx-auto relative z-10">
+                
+                {/* 1. Frontend Layer (User Interface) */}
+                <div className="bg-slate-800 border border-purple-500/50 p-5 rounded-lg flex flex-col shadow-lg transform transition-transform hover:-translate-y-1">
+                    <div className="flex items-center gap-4 mb-3">
+                        {/* Icon: Brain/User */}
+                        <div className="p-2 bg-purple-500/10 rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M11 4a2 2 0 110 4m0 0v10a2 2 0 004 0V8a2 2 0 10-4 0m0 0a2 2 0 01-4 0V8a2 2 0 114 0m-4 0a2 2 0 004 0V4a2 2 0 11-4 0" />
+                            </svg>
+                        </div>
+                        <h4 className="font-bold text-slate-200 text-lg">1. Frontend</h4>
+                    </div>
+                    <p className="text-sm text-slate-400">
+                        <strong>High-Level Abstraction:</strong> Simple, elegant, and Pythonic interface (e.g., PyTorch, TensorFlow APIs) for model definition and training setup.
+                    </p>
+                </div>
 
+                {/* Arrow Down */}
+                <div className="flex justify-center -my-2">
+                    <div className="h-8 w-px bg-gradient-to-b from-purple-500 to-blue-500"></div>
+                </div>
+
+                {/* 2. Operator/Graph Layer (Optimization & Scheduling) */}
+                <div className="bg-blue-900/20 border border-blue-500/50 p-5 rounded-lg relative backdrop-blur-sm transform transition-transform hover:-translate-y-1">
+                    <div className="absolute -top-3 left-4 px-2 py-0.5 bg-blue-600 text-white text-[10px] font-bold rounded shadow-sm">THE OPTIMIZER</div>
+                    <div className="flex items-start gap-4">
+                        {/* Icon: Layers/Branch */}
+                        <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-blue-400 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M4 7v10a4 4 0 004 4h4m-4 0v-4m0 4h-4m4-10v4m0-4h4m4 10v4m0-4h-4m4-4V7a4 4 0 00-4-4h-4a4 4 0 00-4 4v3" />
+                        </svg>
+                        <div className="flex-1">
+                            <h4 className="font-bold text-blue-100 text-lg mb-2">2. Computation Graph</h4>
+                            <ul className="list-disc list-inside text-sm text-slate-300 ml-2 space-y-1">
+                                <li><strong>Graph Construction:</strong> Converts model definition into a computational graph.</li>
+                                <li><strong>Optimization:</strong> Performs operator <strong>fusion</strong>, <strong>parallelization</strong>, and memory management.</li>
+                            </ul>
+
+                            {/* 图示: Graph */}
+                            <div className="mt-3 p-3 bg-slate-950 rounded border border-slate-700 font-mono text-xs text-slate-300 shadow-inner">
+                                <span className="text-pink-400">Input</span> → <span className="text-yellow-400">Graph_A</span> → <span className="text-green-400">Optimize</span> → <span className="text-yellow-400">Graph_C</span> → <span className="text-pink-400">Output</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Arrow Down */}
+                <div className="flex justify-center -my-2">
+                    <div className="h-8 w-px bg-gradient-to-b from-blue-500 to-green-500"></div>
+                </div>
+
+                {/* 3. Kernel/Hardware Layer (Execution Engine) */}
+                <div className="bg-slate-800 border border-green-500/50 p-5 rounded-lg flex flex-col shadow-lg opacity-90 transform transition-transform hover:-translate-y-1">
+                    <div className="flex items-center gap-4 mb-3">
+                        {/* Icon: CPU/Hardware */}
+                        <div className="p-2 bg-green-500/10 rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="8" y1="8" x2="16" y2="8"></line>
+                                <line x1="8" y1="12" x2="16" y2="12"></line>
+                                <line x1="8" y1="16" x2="16" y2="16"></line>
+                            </svg>
+                        </div>
+                        <h4 className="font-bold text-slate-200 text-lg">3. Kernel</h4>
+                    </div>
+                    <p className="text-sm text-slate-400">
+                        <strong>Low-Level Implementation:</strong> Generates highly optimized <strong>Kernels</strong> (e.g., CUDA, ROCm) for seamless deployment across various hardware.
+                    </p>
+
+                    {/* 图示: Hardware */}
+                    <div className="mt-3 flex justify-around p-3 bg-slate-950 rounded border border-slate-700 shadow-inner">
+                        <span className="text-sm text-red-400 font-medium flex items-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M7 10h3v4h-3v-4zM14 7h7m-7 4h7m-7 4h7" /><rect x="3" y="7" width="4" height="10" rx="1"></rect></svg>
+                            GPU
+                        </span>
+                        <span className="text-sm text-cyan-400 font-medium flex items-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M5 21l7-14 7 14M9 10l6 0" /></svg>
+                            CPU
+                        </span>
+                        <span className="text-sm text-yellow-400 font-medium flex items-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M4 10h4l2 3v-3h2l2 3v-3h2l2 3v-3h2v4a3 3 0 0 1-3 3h-14a3 3 0 0 1-3-3v-4" /></svg>
+                            NPU/ASIC
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            {/* Background Glows (For Aesthetic Effect) */}
+            <div className="absolute top-1/4 left-10 w-48 h-48 bg-blue-500/10 rounded-full blur-[60px]"></div>
+            <div className="absolute bottom-10 right-10 w-40 h-40 bg-purple-500/10 rounded-full blur-[60px]"></div>
+        </div>
+    </div>
+);
+
+      const CoreChallenges = () => {
+  const colors = ["bg-yellow-50", "bg-green-50", "bg-purple-50"];
+
+  return (
+    <div className="my-10 space-y-4">
+      {[
+        { title: "Determining what to cache", desc: "Centroids should be cached. Otherwise, all the key cache will be accessed every step.", icon: "Database" },
+        { title: "Dispatching the right ops", desc: "Operators like mv, topk while semantically same as torch ops, the underlying storage of input tensor(might have a page or ragged format) they process is different.", icon: "GitBranch" },
+        { title: "Leveraging Infrastructure", desc: "Attention kernels and memory manager are super-optimized. Reuse them.", icon: "Server" }
+      ].map((item, i) => (
+        <div
+          key={i}
+          className={`flex items-start gap-4 p-4 rounded-lg border border-slate-100 ${colors[i]}`}
+        >
+          <div className="bg-white p-2 rounded shadow-sm">
+            <Icon name={item.icon} className="w-5 h-5 text-blue-500" />
+          </div>
+          <div>
+            <h4 className="font-bold text-slate-800 text-sm">{item.title}</h4>
+            <p className="text-sm text-slate-600">{item.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+      const MathBlock = ({ latex, title }) => {
+  const mathRef = React.useRef(null);
+
+  useEffect(() => {
+    if (mathRef.current && window.katex) {
+      try {
+        window.katex.render(latex, mathRef.current, {
+          displayMode: true,
+          throwOnError: false,
+        });
+      } catch (e) {
+        console.error("KaTeX rendering error:", e);
+        mathRef.current.innerHTML = `<span style="color:red;">Error rendering formula: ${e.message}</span>`;
+      }
+    }
+  }, [latex]);
+
+  return (
+    <div className="my-8 p-6 bg-blue-50 border-2 border-blue-200 rounded-xl shadow-inner">
+      {title && (
+        <h3 className="font-bold text-sm text-blue-700 uppercase tracking-wider mb-3 border-b border-blue-200 pb-2">
+          {title}
+        </h3>
+      )}
+      <div ref={mathRef} className="text-xl text-slate-800 text-center py-2">
+        {latex}
+      </div>
+    </div>
+  );
+};
+      const BlockSparseAttentionVortexExample = () => (
+    // Outer Container (Mimics IDE/Terminal Window)
+    <div className="my-10 max-w-xl mx-auto bg-slate-900 rounded-xl shadow-2xl ring-1 ring-slate-900/5">
+        
+        {/* Title Bar */}
+        <div className="bg-slate-800/50 px-6 py-3 border-b border-slate-700/50 flex justify-between items-center">
+            <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wide">BlockSparseAttention.py</h3>
+            <div className="flex gap-1.5">
+                <div className="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
+                <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
+                <div className="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
+            </div>
+        </div>
+        
+        {/* Code Content */}
+        <pre className="p-5 overflow-x-auto font-mono text-sm text-slate-300">
+            <code className="whitespace-pre">
+                <span className="text-yellow-400">@register</span>(<span className="text-green-500">"block_sparse_attention"</span>)
+                <br />
+                <span className="text-blue-500">class</span> <span className="text-cyan-400">BlockSparseAttention</span>(<span className="text-cyan-400">vFlow</span>):
+                <br />
+                <br />
+                &nbsp;&nbsp;<span className="text-blue-500">def</span> <span className="text-yellow-400">__init__</span>(<span className="text-orange-400">self</span>):
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;super().<span className="text-yellow-400">__init__</span>()
+                <br />
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-orange-400">self</span>.<span className="text-red-400">gemv</span> = GemMV()
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-orange-400">self</span>.<span className="text-red-400">output_func</span> = topK()
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-orange-400">self</span>.<span className="text-red-400">reduction</span> = Mean(<span className="text-orange-400">dim</span>=<span className="text-purple-400">1</span>)
+                <br />
+                <br />
+                &nbsp;&nbsp;<span className="text-blue-500">def</span> <span className="text-yellow-400">forward_indexer</span>(<span className="text-orange-400">self</span>, q, o, cache, ctx):
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-red-400">q_mean</span> = q.<span className="text-yellow-400">mean</span>(<span className="text-orange-400">dim</span>=<span className="text-purple-400">1</span>, <span className="text-orange-400">keepdim</span>=<span className="text-blue-400">True</span>)
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-red-400">score</span> = <span className="text-orange-400">self</span>.<span className="text-yellow-400">gemv</span>(<span className="text-red-400">q_mean</span>, cache[<span className="text-green-500">"centroids"</span>], <span className="text-orange-400">ctx</span>=<span className="text-red-400">ctx</span>)
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-orange-400">self</span>.<span className="text-red-400">output_func</span>(<span className="text-red-400">score</span>, o, <span className="text-orange-400">ctx</span>=<span className="text-red-400">ctx</span>)
+                <br />
+                <br />
+                &nbsp;&nbsp;<span className="text-blue-500">def</span> <span className="text-yellow-400">forward_cache</span>(<span className="text-orange-400">self</span>, cache:Dict[<span className="text-green-500">"str"</span>, torch.<span className="text-cyan-400">Tensor</span>], loc:torch.<span className="text-cyan-400">Tensor</span>, ctx:<span className="text-cyan-400">ContextBase</span>):
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-orange-400">self</span>.<span className="text-red-400">reduction</span>(cache[<span className="text-green-500">"k"</span>], cache[<span className="text-green-500">"centroids"</span>], loc=<span className="text-red-400">loc</span>, <span className="text-orange-400">ctx</span>=<span className="text-red-400">ctx</span>)
+                <br />
+                <br />
+                &nbsp;&nbsp;<span className="text-blue-500">def</span> <span className="text-yellow-400">create_cache</span>(<span className="text-orange-400">self</span>, page_size: <span className="text-cyan-400">int</span>, head_dim: <span className="text-cyan-400">int</span>):
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-400">return</span>{" "}
+{"{"}
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span className="text-green-500">"centroids"</span>
+<span className="text-slate-400">: </span>
+(<span className="text-purple-400">1</span>, <span className="text-red-400">head_dim</span>)
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;{"}"}
+
+            </code>
+        </pre>
+    </div>
+);
+      const BlockSparseAttentionExample = () => {
+          // Tailwind classes for code highlighting
+          const Highlight = ({ children, color }) => {
+              const colors = {
+                  yellow: "bg-amber-200/50 text-slate-900", // Soft Amber
+                  green: "bg-green-200/50 text-slate-900", // Soft Green
+                  purple: "bg-indigo-200/50 text-slate-900", // Soft Indigo
+              };
+              return <span className={`px-1 py-0.5 rounded ${colors[color]}`}>{children}</span>;
+          };
+
+          return (
+              <div className="my-10">
+                  <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                    <Icon name="Code" className="w-5 h-5 text-blue-500" />
+                    Block Sparse Attention Code Example
+                  </h3>
+                  <div className="bg-slate-800 p-6 rounded-xl shadow-xl overflow-x-auto text-sm font-mono text-slate-200 border border-slate-700">
+                      <pre>
+                          <span className="text-blue-400">import</span> torch<br/>
+
+                          <span className="text-blue-400">def</span> <span className="text-yellow-300">block_sparse_attention</span>(q, k, v):<br/>
+                            &nbsp;&nbsp;<Highlight color="yellow">centroids = k.mean(dim=-2)</Highlight><br/>
+                            &nbsp;&nbsp;<span className="text-slate-500">#save in cache</span><br/>
+
+                            &nbsp;&nbsp;score = <Highlight color="green">torch.mv(centroids, q)</Highlight><br/>
+                            &nbsp;&nbsp;indices = <Highlight color="green">torch.topk(score)</Highlight><br/>
+                            &nbsp;&nbsp;<span className="text-slate-500">#customized op</span><br/>
+
+                            &nbsp;&nbsp;o = <Highlight color="purple">attention</Highlight>(q, <Highlight color="purple">k[indices]</Highlight>, <Highlight color="purple">v[indices]</Highlight>)<br/>
+                            &nbsp;&nbsp;<span className="text-slate-500">#call attention backend & memory</span><br/>
+                            &nbsp;&nbsp;<span className="text-slate-500">#manager in serving system</span><br/>
+
+                            &nbsp;&nbsp;<span className="text-blue-400">return</span> o<br/>
+                      </pre>
+                  </div>
+              </div>
+          );
+      };
+      // --- END NEW COMPONENT ---
       const VortexArchitectureDiagram = () => (
         <div className="my-10 bg-slate-900 rounded-xl overflow-hidden shadow-2xl ring-1 ring-slate-900/5 text-slate-300">
           <div className="bg-slate-800/50 px-6 py-3 border-b border-slate-700/50 flex justify-between items-center">
@@ -240,53 +497,183 @@
             <Icon name="Code" className="w-3 h-3" /> The Extended Tensor Abstraction
           </div>
           <div className="text-slate-800">
-            <span className="text-purple-600">class</span> <span className="text-yellow-600">VortexTensor</span>(Tensor):<br/>
+            <span className="text-purple-600">class</span> <span className="text-yellow-600">vTensor</span>(Tensor):<br/>
             &nbsp;&nbsp;<span className="text-slate-500"># Standard PyTorch data</span><br/>
             &nbsp;&nbsp;self.data = data<br/>
             &nbsp;&nbsp;<span className="text-slate-500"># The magic field</span><br/>
             &nbsp;&nbsp;self.<span className="text-blue-600 font-bold">storage_format</span> = format <span className="text-slate-400">// e.g. Flat, Paged, Ragged</span>
-          </div>
-          <div className="mt-4 pt-4 border-t border-slate-200 text-xs text-slate-500">
-            System developers optimize <code>mv(flat, paged)</code>. Users just call <code>mv()</code>.
-          </div>
+          </div>ß
         </div>
       );
 
-      const PerformanceChart = () => (
-        <div className="my-10 p-6 bg-white border border-slate-200 rounded-xl shadow-sm">
-          <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wide mb-6">Throughput Gain vs. Baseline</h3>
-          <div className="h-64 w-full">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={performanceData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                <XAxis dataKey="name" tick={{fontSize: 12, fill: '#64748b'}} axisLine={false} tickLine={false} />
-                <YAxis hide />
-                <Tooltip 
-                  cursor={{fill: '#f8fafc'}}
-                  contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
-                />
-                <Bar dataKey="baseline" name="Baseline" fill="#e2e8f0" radius={[4, 4, 0, 0]} />
-                <Bar dataKey="vortex" name="Vortex (Max)" fill="#3b82f6" radius={[4, 4, 0, 0]}>
-                  {performanceData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={index === 1 ? '#1d4ed8' : '#3b82f6'} />
-                  ))}
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-          <div className="flex justify-center gap-8 mt-4">
-             <div className="text-center">
-                <p className="text-2xl font-bold text-slate-800">2.8x</p>
-                <p className="text-xs text-slate-500">Max Gain on H100</p>
-             </div>
-             <div className="text-center">
-                <p className="text-2xl font-bold text-blue-700">4.0x</p>
-                <p className="text-xs text-slate-500">Max Gain on A40</p>
-             </div>
-          </div>
-        </div>
-      );
+      // 示例数据：吞吐量，单位可以理解为 tokens/s
+const performanceData = [
+  {
+    name: "H100 · Qwen3-0.6B",
+    baseline: 3071,
+    vortex: 8514,
+  },
+  {
+    name: "H100 · Qwen3-4B",
+    baseline: 1786,
+    vortex: 4864,
+  },
+  {
+    name: "A40 · Qwen3-0.6B",
+    baseline: 666,
+    vortex: 2670,
+  },
+  {
+    name: "A40 · Qwen3-1.7B",
+    baseline: 596,
+    vortex: 1943,
+  },
+];
 
+const PerformanceChart = () => (
+  <div className="my-10 p-6 bg-white border border-slate-200 rounded-xl shadow-sm">
+    <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wide mb-6">
+      Throughput vs. Full attention
+    </h3>
+
+    <div className="h-64 w-full">
+      <ResponsiveContainer width="100%" height="100%">
+        <BarChart
+          data={performanceData}
+          margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+        >
+          <CartesianGrid
+            strokeDasharray="3 3"
+            vertical={false}
+            stroke="#f1f5f9"
+          />
+          <XAxis
+            dataKey="name"
+            tick={{ fontSize: 12, fill: "#64748b" }}
+            axisLine={false}
+            tickLine={false}
+          />
+          <YAxis hide />
+          <Tooltip
+            cursor={{ fill: "#f8fafc" }}
+            contentStyle={{
+              borderRadius: "8px",
+              border: "none",
+              boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)",
+            }}
+          />
+          <Bar
+            dataKey="baseline"
+            name="Baseline"
+            fill="#e2e8f0"
+            radius={[4, 4, 0, 0]}
+          />
+          <Bar
+            dataKey="vortex"
+            name="Vortex"
+            fill="#3b82f6"
+            radius={[4, 4, 0, 0]}
+          >
+            {performanceData.map((entry, index) => (
+              // 高亮 A40 · Qwen3-0.6B（4.0x 的那一组）
+              <Cell
+                key={`cell-${index}`}
+                fill={index === 2 ? "#1d4ed8" : "#3b82f6"}
+              />
+            ))}
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
+
+    {/* 汇总数值 */}
+    <div className="flex justify-center gap-8 mt-4">
+      <div className="text-center">
+        <p className="text-2xl font-bold text-slate-800">2.8×</p>
+        <p className="text-xs text-slate-500">Max Gain on H100</p>
+      </div>
+      <div className="text-center">
+        <p className="text-2xl font-bold text-blue-700">4.0×</p>
+        <p className="text-xs text-slate-500">Max Gain on A40</p>
+      </div>
+    </div>
+
+    {/* 基准说明 */}
+    <p className="mt-3 text-[11px] text-slate-500 text-center">
+      Benchmark: AIME24@8, 16K-token generation; Vortex with block size 16, 32 blocks each step; higher is better.
+    </p>
+  </div>
+);
+
+
+      const VortexConfigurationDiagram = () => (
+    <div className="my-10 max-w-xl mx-auto bg-slate-900 rounded-xl shadow-2xl ring-1 ring-slate-900/5 p-8 relative overflow-hidden">
+        
+        {/* Title/Description Area */}
+        <div className="text-center mb-8">
+            <h3 className="text-xl font-bold text-slate-200 mb-2">Vortex Flow</h3>
+            <p className="text-slate-400 text-sm leading-relaxed">
+                The base class of Vortex, namely vFlow (like nn.Module in torch) relies on three decoupled methods: <strong>create_cache</strong> defines the structure, <strong>forward_cache</strong> computes it, and <strong>forward_indexer</strong> consumes it.
+            </p>
+        </div>
+
+        <div className="flex flex-col items-center gap-6 relative z-10">
+
+            {/* 1. create_cache (Configuration/Definition Layer) */}
+            <div className="flex flex-col items-center text-center p-4 bg-slate-800 border border-yellow-500/50 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 w-full">
+                <div className="p-3 bg-yellow-500/10 rounded-full mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                    </svg>
+                </div>
+                <h4 className="font-bold text-yellow-300 text-base mb-1">1. create_cache(page_size, head_dim)</h4>
+                <p className="text-xs text-slate-500 leading-tight">
+                    <strong>Defines Cache Structure:</strong> Specifies the size and name of each page cache.
+                </p>
+                {/* Code snippet illustrating the return value */}
+                <div className="mt-2 p-1 bg-slate-950 rounded border border-slate-700 font-mono text-xs text-slate-300">
+                    {'{'} "centroids": (1, head_dim) {'}'}
+                </div>
+            </div>
+            
+            {/* Arrow Down: Runtime -> Entry Points */}
+            <div className="flex justify-center w-full">
+                <div className="h-8 w-px bg-gradient-to-b from-blue-500 to-slate-400"></div>
+            </div>
+
+            {/* 2. & 3. Execution Entry Points */}
+            <div className="flex justify-around w-full">
+                
+                {/* forward_cache Block (Computation) */}
+                <div className="flex flex-col items-center text-center p-4 bg-slate-800 border border-red-500/50 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 w-[48%]">
+                    <div className="p-3 bg-red-500/10 rounded-full mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M4 7v10a4 4 0 004 4h4m-4 0v-4m0 4h-4m4-10v4m0-4h4m4 10v4m0-4h-4m4-4V7a4 4 0 00-4-4h-4a4 4 0 00-4 4v3" />
+                        </svg>
+                    </div>
+                    <h4 className="font-bold text-red-300 text-sm mb-1">2. forward_cache()</h4>
+                    <p className="text-xs text-slate-500 leading-tight">Computes & Updates Cache Values.</p>
+                </div>
+
+                {/* forward_indexer Block (Consumption) */}
+                <div className="flex flex-col items-center text-center p-4 bg-slate-800 border border-green-500/50 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 w-[48%]">
+                    <div className="p-3 bg-green-500/10 rounded-full mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                    </div>
+                    <h4 className="font-bold text-green-300 text-sm mb-1">3. forward_indexer()</h4>
+                    <p className="text-xs text-slate-500 leading-tight">Consumes Cache to Compute Indices.</p>
+                </div>
+            </div>
+
+        </div>
+        
+        {/* Background Glows */}
+        <div className="absolute top-1/4 left-10 w-48 h-48 bg-blue-500/10 rounded-full blur-[60px]"></div>
+        <div className="absolute bottom-10 right-10 w-40 h-40 bg-purple-500/10 rounded-full blur-[60px]"></div>
+    </div>
+);
       // --- Main Component ---
       const App = () => {
         const [mounted, setMounted] = useState(false);
@@ -309,17 +696,25 @@
                   <span className="text-blue-600">Sparse Attention</span>
                 </h1>
                 
-                <div className="flex items-center gap-6 text-sm text-slate-500 border-b border-slate-100 pb-8">
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 bg-slate-200 rounded-full flex items-center justify-center">
-                      <Icon name="User" className="w-4 h-4 text-slate-500" />
-                    </div>
-                    <span className="font-medium text-slate-900">System Research</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Icon name="Clock" className="w-4 h-4" />
-                    <span>6 min read</span>
-                  </div>
+                <div className="flex flex-wrap items-center gap-4 text-sm text-slate-500 mb-8">
+                    <a
+                        href="https://github.com/Infini-AI-Lab/vortex_torch/tree/v1"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 hover:text-blue-600 transition-colors"
+                    >
+                        <Icon name="Code" className="w-4 h-4" />
+                        <span>Code</span>
+                    </a>
+                    <a
+                        href="https://infini-ai-lab.github.io/vortex_torch/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 hover:text-blue-600 transition-colors"
+                    >
+                        <Icon name="FileText" className="w-4 h-4" />
+                        <span>Document</span>
+                    </a>
                 </div>
               </header>
 
@@ -356,19 +751,22 @@
                 <p className="text-slate-700 mb-6">
                   A helpful analogy comes from the evolution of Deep Learning. <strong>PyTorch</strong> succeeded because it separated concerns:
                 </p>
-                <ul className="list-disc pl-6 mb-6 space-y-2 text-slate-700">
-                  <li><strong>Frontend:</strong> Simple, Pythonic interface for researchers.</li>
-                  <li><strong>System Layer:</strong> Computational graph engine for heavy lifting.</li>
-                  <li><strong>Hardware:</strong> Seamless deployment across CPUs, GPUs, TPUs.</li>
-                </ul>
+                <DeepLearningArchitecture />
+
                 <p className="text-slate-700">
-                  Sparse attention deserves the same kind of ecosystem. A place where AI agents can excel at constructing networks and writing kernels without fighting the infrastructure.
+                  In contrast, to play with a sparse attention algorithm, users need to be a full stack expert: from algorithm design to kernel implementation. Definitely, Sparse attention deserves the same kind of ecosystem as deep learning. A place where AI agents can excel at constructing networks and writing kernels without fighting the infrastructure.
                 </p>
 
                 {/* Challenges */}
                 <SectionHeader title="3. Core Challenges" />
+                
+                <p className="text-slate-700">
+                  Establishing a proper abstraction for sparse attention models has extra difficulty from torch. Torch focuses on one-time computation where everything is explicit, while we need to consider the tensors are coming from a serving system. To make this clear, we introduce the core challenges from a well-known example of sparse attention, e.g., block sparse attention.
+                </p>
+                {/* --- NEW PLACEMENT --- */}
+                <BlockSparseAttentionExample />
                 <p className="text-slate-700 mb-6">
-                  Even in simple prototypes, three fundamental challenges appear immediately:
+                   The code above, while algorithmically correct, faces the following three challenges when attempting to run efficiently and faithfully.
                 </p>
                 <CoreChallenges />
 
@@ -378,31 +776,159 @@
                   Vortex is the bridge. It lets developers write sparse attention like standard PyTorch, yet gives serving systems the structure they need to execute efficiently.
                 </p>
 
-                <h3 className="font-bold text-lg text-slate-900 mt-8 mb-4">4.1 Two-Phase Frontend</h3>
                 <p className="text-slate-700 mb-6">
-                  Vortex introduces two entry points that map cleanly to serving system components:
+                  Below is the block sparse attention written in Vortex. We introduce 3 nice features.
                 </p>
-                
-                <VortexArchitectureDiagram />
 
-                <h3 className="font-bold text-lg text-slate-900 mt-8 mb-4">4.2 One Tensor Interface, Many Backends</h3>
-                <p className="text-slate-700 mb-6">
-                   To manage layout complexity (Flat, Ragged, Paged), Vortex extends the tensor abstraction.
-                </p>
+                <BlockSparseAttentionVortexExample />
+
+                <h3 className="font-bold text-lg text-slate-900 mt-8 mb-4">4.1 Simple Entry</h3>
+                <div className="mb-6 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm leading-relaxed text-slate-700">
+                  <p>
+                    Users define a sparse attention algorithm by subclassing{" "}
+                    <span className="font-semibold text-slate-900">vFlow</span>. The subclass exposes three key entry points:
+                  </p>
+                  <ul className="mt-2 list-disc list-inside space-y-1">
+                    <li>
+                      <span className="font-mono text-xs bg-slate-200/70 px-1.5 py-0.5 rounded">
+                        create_cache
+                      </span>
+                      <span className="ml-1">
+                        defines the shape, size, and name of the cache.
+                      </span>
+                    </li>
+                    <li>
+                      <span className="font-mono text-xs bg-slate-200/70 px-1.5 py-0.5 rounded">
+                        forward_cache
+                      </span>
+                      <span className="ml-1">
+                        specifies how the cache is computed and updated.
+                      </span>
+                    </li>
+                    <li>
+                      <span className="font-mono text-xs bg-slate-200/70 px-1.5 py-0.5 rounded">
+                        forward_indexer
+                      </span>
+                      <span className="ml-1">
+                        tells the runtime how to derive the required indices from the saved cache.
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+                
+                {/* --- NEW PLACEMENT --- */}
+                
+                <VortexConfigurationDiagram />
+                
+
+                <h3 className="font-bold text-lg text-slate-900 mt-8 mb-4">4.2 Simple Program</h3>
+                <div className="mb-6 rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm leading-relaxed text-green-900">
+  <p className="font-semibold mb-1 flex items-center gap-2">
+    <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-green-200 text-[10px] font-bold">
+      ✓
+    </span>
+    Layout–invariant view of tensors
+  </p>
+  <p className="text-green-900/90">
+    No matter what the actual layout is
+    (<span className="font-mono text-xs bg-white/70 px-1 py-0.5 rounded border border-green-100">
+      Flat
+    </span>
+    ,
+    <span className="font-mono text-xs bg-white/70 px-1 py-0.5 rounded border border-green-100">
+      Ragged
+    </span>
+    ,
+    <span className="font-mono text-xs bg-white/70 px-1 py-0.5 rounded border border-green-100">
+      Paged
+    </span>
+    ) in the serving system, users can always assume:
+  </p>
+  <ul className="mt-2 list-disc list-inside space-y-1 text-green-900/90">
+    <li>
+      <span className="font-mono text-xs bg-white/80 px-1 py-0.5 rounded border border-green-100">
+        query
+      </span>{" "}
+      has shape{" "}
+      <span className="font-mono text-xs bg-white/80 px-1 py-0.5 rounded border border-green-100">
+        [1, G, D]
+      </span>
+    </li>
+    <li>
+      <span className="font-mono text-xs bg-white/80 px-1 py-0.5 rounded border border-green-100">
+        cache
+      </span>{" "}
+      has shape{" "}
+      <span className="font-mono text-xs bg-white/80 px-1 py-0.5 rounded border border-green-100">
+        [seq_length, r, c]
+      </span>
+      , where{" "}
+      <span className="font-mono text-xs bg-white/80 px-1 py-0.5 rounded border border-green-100">
+        (r, c)
+      </span>{" "}
+      is defined by{" "}
+      <span className="font-mono text-xs bg-white/80 px-1 py-0.5 rounded border border-green-100">
+        create_cache
+      </span>
+      .
+    </li>
+  </ul>
+</div>
+                <div className="mb-6 text-sm leading-relaxed text-slate-800">
+  <p>
+    Vortex enables this by extending the definition of a tensor with an extra{" "}
+    <span className="font-mono text-xs bg-white px-1 py-0.5 rounded border border-slate-200">
+      storage_format
+    </span>{" "}
+    field. Based on this field, the system internally dispatches the appropriate
+    operators and kernels, without disturbing the exploration journey of
+    algorithm developers.
+  </p>
+</div>
+
 
                 <TensorInterfaceVisual />
 
-                <h3 className="font-bold text-lg text-slate-900 mt-8 mb-4">4.3 Built to Reuse Infrastructure</h3>
-                <p className="text-slate-700 mb-6">
-                  Vortex doesn't reinvent the wheel. It reuses the core infrastructure of modern LLM serving systems. If FlashAttention upgrades to v3, Vortex inherits the speedup immediately.
-                </p>
+                <h3 className="font-bold text-lg text-slate-900 mt-8 mb-4">
+  4.3 Engineering-Friendly
+</h3>
+
+<div className="text-slate-700 mb-6 space-y-3 leading-relaxed">
+
+  {/* Point 1 */}
+  <p>
+    <span className="font-semibold text-slate-900">1. Built to work with SOTA Infrastructure.</span>
+    It reuses the core infrastructure already adopted in modern LLM serving systems—those optimized for
+    <span className="font-mono text-xs bg-slate-100 px-1 py-0.5 rounded border border-slate-200 mx-1">flashinfer</span>
+    (with <span className="font-mono text-xs bg-slate-100 px-1 py-0.5 rounded border border-slate-200">flash-attention</span> support coming soon),
+    <span className="font-mono text-xs bg-slate-100 px-1 py-0.5 rounded border border-slate-200">cudagraph</span>,
+    <span className="font-mono text-xs bg-slate-100 px-1 py-0.5 rounded border border-slate-200">radix attention</span>, and <span className="font-mono text-xs bg-slate-100 px-1 py-0.5 rounded border border-slate-200 mx-1">continous batching</span>.
+    When any underlying module receives an upgrade, Vortex inherits the speedup immediately—zero engineering overhead.
+  </p>
+
+  {/* Point 2 */}
+  <p>
+    <span className="font-semibold text-slate-900">2. Clean separation between algorithm and engineering.</span>
+    Engineers do not need to understand the full algorithmic design to contribute. Thanks to the modular operator
+    abstraction, they can freely optimize any operator using their preferred toolchain—
+    <span className="font-mono text-xs bg-slate-100 px-1 py-0.5 rounded border border-slate-200">CUDA</span>,
+    <span className="font-mono text-xs bg-slate-100 px-1 py-0.5 rounded border border-slate-200">Triton</span>,
+    <span className="font-mono text-xs bg-slate-100 px-1 py-0.5 rounded border border-slate-200">Tile-lang</span>,
+    or even a <span className="font-mono text-xs bg-slate-100 px-1 py-0.5 rounded border border-slate-200">naive PyTorch</span> implementation—without touching the algorithm layer.
+  </p>
+
+</div>
+
 
                 {/* Applications */}
                 <SectionHeader title="5. Applications" />
-                <p className="text-slate-700 mb-6">
-                  With Vortex, sparse-attention research moves from toy settings to real deployments. The system delivers substantial throughput gains without model-specific engineering.
-                </p>
-
+                {/* Serving */}
+  <div>
+    <h4 className="font-semibold text-slate-900 mb-1">5.1 High-Throughput Serving</h4>
+    <p>
+      With Vortex, sparse-attention research moves from toy settings to real deployments. The system delivers substantial throughput gains without model-specific engineering.
+    </p>
+  </div>
                 <PerformanceChart />
 
                 <div className="mt-10 p-8 bg-blue-50 rounded-2xl border border-blue-100 text-center">
