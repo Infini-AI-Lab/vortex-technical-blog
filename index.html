@@ -1076,6 +1076,63 @@ const PerformanceChart = () => {
 
 
                 <TensorInterfaceVisual />
+
+                 <h3 className="font-bold text-lg text-slate-900 mt-8 mb-4">
+  4.3 Engineering-Friendly
+</h3>
+
+<div className="text-slate-700 mb-6 space-y-3 leading-relaxed">
+
+  {/* Point 1 */}
+  <p>
+    <span className="font-semibold text-slate-900">1. Built to work with SOTA Infrastructure.</span>
+    It reuses the core infrastructure already adopted in modern LLM serving systems—those optimized for
+    <span className="font-mono text-xs bg-slate-100 px-1 py-0.5 rounded border border-slate-200 mx-1">flashinfer</span>
+    (with <span className="font-mono text-xs bg-slate-100 px-1 py-0.5 rounded border border-slate-200">flash-attention</span> support coming soon),
+    <span className="font-mono text-xs bg-slate-100 px-1 py-0.5 rounded border border-slate-200">cudagraph</span>,
+    <span className="font-mono text-xs bg-slate-100 px-1 py-0.5 rounded border border-slate-200">radix attention</span>, and <span className="font-mono text-xs bg-slate-100 px-1 py-0.5 rounded border border-slate-200 mx-1">continous batching</span>.
+    When any underlying module receives an upgrade, Vortex inherits the speedup immediately—zero engineering overhead.
+  </p>
+
+  {/* Point 2 */}
+  <p>
+    <span className="font-semibold text-slate-900">2. Clean separation between algorithm and engineering.</span>
+    Engineers do not need to understand the full algorithmic design to contribute. Thanks to the modular operator
+    abstraction, they can freely optimize any operator using their preferred toolchain—
+    <span className="font-mono text-xs bg-slate-100 px-1 py-0.5 rounded border border-slate-200">CUDA</span>,
+    <span className="font-mono text-xs bg-slate-100 px-1 py-0.5 rounded border border-slate-200">Triton</span>,
+    <span className="font-mono text-xs bg-slate-100 px-1 py-0.5 rounded border border-slate-200">Tile-lang</span>,
+    or even a <span className="font-mono text-xs bg-slate-100 px-1 py-0.5 rounded border border-slate-200">naive PyTorch</span> implementation—without touching the algorithm layer.
+  </p>
+
+</div>
+
+
+                {/* Applications */}
+                <SectionHeader title="5. Applications" />
+                {/* Serving */}
+  <div>
+    <h4 className="font-semibold text-slate-900 mb-1">5.1 High-Throughput Serving</h4>
+    <p>
+      With Vortex, sparse-attention research moves from toy settings to real deployments. The system delivers substantial throughput gains without model-specific engineering.
+    </p>
+  </div>
+
+  {}
+  <div>
+    <h4 className="font-semibold text-slate-900 mb-1">5.2 Reinforcement Learning for Sparse Attention</h4>
+    <p>
+      Vortex enables large-scale experimentation in reinforcement learning, where sparse-attention policies can be trained efficiently in realistic environments.
+    </p>
+  </div>
+                
+
+                <div className="mt-10 p-8 bg-blue-50 rounded-2xl border border-blue-100 text-center">
+                  <h3 className="text-xl font-bold text-blue-900 mb-2">Ready to Scale?</h3>
+                  <p className="text-blue-700 leading-relaxed">
+                    By providing a unified framework that bridges algorithms and serving infrastructure, Vortex opens the door to research and applications that truly scale.
+                  </p>
+                </div>
                 
               </main>
             </div>
