@@ -1009,7 +1009,74 @@ const PerformanceChart = () => {
                 {/* --- NEW PLACEMENT --- */}
                 
                 <VortexConfigurationDiagram />
+                 <h3 className="font-bold text-lg text-slate-900 mt-8 mb-4">4.2 Simple Program</h3>
+                <div className="mb-6 rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm leading-relaxed text-green-900">
+  <p className="font-semibold mb-1 flex items-center gap-2">
+    <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-green-200 text-[10px] font-bold">
+      ✓
+    </span>
+    Layout–invariant view of tensors
+  </p>
+  <p className="text-green-900/90">
+    No matter what the actual layout is
+    (<span className="font-mono text-xs bg-white/70 px-1 py-0.5 rounded border border-green-100">
+      Flat
+    </span>
+    ,
+    <span className="font-mono text-xs bg-white/70 px-1 py-0.5 rounded border border-green-100">
+      Ragged
+    </span>
+    ,
+    <span className="font-mono text-xs bg-white/70 px-1 py-0.5 rounded border border-green-100">
+      Paged
+    </span>
+    ) in the serving system, users can always assume:
+  </p>
+  <ul className="mt-2 list-disc list-inside space-y-1 text-green-900/90">
+    <li>
+      <span className="font-mono text-xs bg-white/80 px-1 py-0.5 rounded border border-green-100">
+        query
+      </span>{" "}
+      has shape{" "}
+      <span className="font-mono text-xs bg-white/80 px-1 py-0.5 rounded border border-green-100">
+        [1, G, D]
+      </span>
+    </li>
+    <li>
+      <span className="font-mono text-xs bg-white/80 px-1 py-0.5 rounded border border-green-100">
+        cache
+      </span>{" "}
+      has shape{" "}
+      <span className="font-mono text-xs bg-white/80 px-1 py-0.5 rounded border border-green-100">
+        [seq_length, r, c]
+      </span>
+      , where{" "}
+      <span className="font-mono text-xs bg-white/80 px-1 py-0.5 rounded border border-green-100">
+        (r, c)
+      </span>{" "}
+      is defined by{" "}
+      <span className="font-mono text-xs bg-white/80 px-1 py-0.5 rounded border border-green-100">
+        create_cache
+      </span>
+      .
+    </li>
+  </ul>
+</div>
+                <div className="mb-6 text-sm leading-relaxed text-slate-800">
+  <p>
+    Vortex enables this by extending the definition of a tensor with an extra{" "}
+    <span className="font-mono text-xs bg-white px-1 py-0.5 rounded border border-slate-200">
+      storage_format
+    </span>{" "}
+    field. Based on this field, the system internally dispatches the appropriate
+    operators and kernels, without disturbing the exploration journey of
+    algorithm developers.
+  </p>
+</div>
 
+
+                <TensorInterfaceVisual />
+                
               </main>
             </div>
           </div>
