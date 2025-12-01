@@ -971,7 +971,44 @@ const PerformanceChart = () => {
                 </p>
                 
                 <BlockSparseAttentionVortexExample />
-               
+                
+                <h3 className="font-bold text-lg text-slate-900 mt-8 mb-4">4.1 Simple Entry and Definition</h3>
+                <div className="mb-6 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm leading-relaxed text-slate-700">
+                  <p>
+                    Users define a sparse attention algorithm by subclassing{" "}
+                    <span className="font-semibold text-slate-900">vFlow</span>. The subclass exposes three key entry points:
+                  </p>
+                  <ul className="mt-2 list-disc list-inside space-y-1">
+                    <li>
+                      <span className="font-mono text-xs bg-slate-200/70 px-1.5 py-0.5 rounded">
+                        create_cache
+                      </span>
+                      <span className="ml-1">
+                        defines the shape and name of the cache.
+                      </span>
+                    </li>
+                    <li>
+                      <span className="font-mono text-xs bg-slate-200/70 px-1.5 py-0.5 rounded">
+                        forward_cache
+                      </span>
+                      <span className="ml-1">
+                        specifies how the cache is computed and updated.
+                      </span>
+                    </li>
+                    <li>
+                      <span className="font-mono text-xs bg-slate-200/70 px-1.5 py-0.5 rounded">
+                        forward_indexer
+                      </span>
+                      <span className="ml-1">
+                        tells the runtime how to derive the required indices from the saved cache.
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+                
+                {/* --- NEW PLACEMENT --- */}
+                
+                <VortexConfigurationDiagram />
 
               </main>
             </div>
