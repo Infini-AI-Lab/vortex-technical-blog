@@ -906,6 +906,18 @@ const PerformanceChart = () => {
                   In contrast, to play with a sparse attention algorithm, users need to be a full-stack expert: from algorithm design to kernel implementation. Definitely, Sparse attention deserves the same kind of ecosystem as deep learning.
                 </p>
 
+                {/* Challenges */}
+                <SectionHeader title="3. Core Challenges" />
+                
+                <p className="text-slate-700">
+                  Establishing a proper abstraction for sparse attention models has extra difficulty from torch. Torch focuses on one-time computation where everything is explicit, while we need to consider the tensors are coming from a serving system. To make this clear, we introduce the core challenges from a well-known example of sparse attention, e.g., block sparse attention.
+                </p>
+                {/* --- NEW PLACEMENT --- */}
+                <BlockSparseAttentionExample />
+                <p className="text-slate-700 mb-6">
+                   The code above, while algorithmically correct, faces the following three challenges when attempting to run efficiently and faithfully.
+                </p>
+
                
 
               </main>
