@@ -454,44 +454,76 @@
 );
 
       const BlockSparseAttentionExample = () => {
-          // Tailwind classes for code highlighting
-          const Highlight = ({ children, color }) => {
-              const colors = {
-                  yellow: "bg-amber-200/50 text-slate-900", // Soft Amber
-                  green: "bg-green-200/50 text-slate-900", // Soft Green
-                  purple: "bg-indigo-200/50 text-slate-900", // Soft Indigo
-              };
-              return <span className={`px-1 py-0.5 rounded ${colors[color]}`}>{children}</span>;
-          };
+  // Tailwind classes for code highlighting
+  const Highlight = ({ children, color }) => {
+    const colors = {
+      yellow: "bg-amber-200/50 text-slate-900", // Soft Amber
+      green: "bg-green-200/50 text-slate-900",  // Soft Green
+      purple: "bg-indigo-200/50 text-slate-900" // Soft Indigo
+    };
+    return (
+      <span className={`px-1 py-0.5 rounded ${colors[color]}`}>
+        {children}
+      </span>
+    );
+  };
 
-          return (
-              <div className="my-10">
-                  <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
-                    <Icon name="Code" className="w-5 h-5 text-blue-500" />
-                    Block Sparse Attention Code Example
-                  </h3>
-                  <div className="bg-slate-800 p-6 rounded-xl shadow-xl overflow-x-auto text-sm font-mono text-slate-200 border border-slate-700">
-                      <pre>
-                          <span className="text-blue-400">import</span> torch<br/>
+  return (
+    <div className="my-10 max-w-full">
+      <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+        <Icon name="Code" className="w-5 h-5 text-blue-500" />
+        Block Sparse Attention Code Example
+      </h3>
 
-                          <span className="text-blue-400">def</span> <span className="text-yellow-300">block_sparse_attention</span>(q, k, v):<br/>
-                            &nbsp;&nbsp;<Highlight color="yellow">centroids = k.mean(dim=-2)</Highlight><br/>
-                            &nbsp;&nbsp;<span className="text-slate-500">#save in cache</span><br/>
+      <div
+        className="
+          bg-slate-800
+          p-3 sm:p-4 md:p-6
+          rounded-xl shadow-xl
+          text-[11px] sm:text-xs md:text-sm
+          font-mono text-slate-200
+          border border-slate-700
+          max-w-full
+        "
+      >
+        <pre className="whitespace-pre-wrap break-words">
+          <span className="text-blue-400">import</span> torch{"\n"}
+          {"\n"}
+          <span className="text-blue-400">def</span>{" "}
+          <span className="text-yellow-300">block_sparse_attention</span>(q, k, v):{"\n"}
+          {"  "}
+          <Highlight color="yellow">centroids = k.mean(dim=-2)</Highlight>{"\n"}
+          {"  "}
+          <span className="text-slate-500"># save in cache</span>{"\n"}
+          {"\n"}
+          {"  "}
+          score = <Highlight color="green">torch.mv(centroids, q)</Highlight>{"\n"}
+          {"  "}
+          indices = <Highlight color="green">torch.topk(score)</Highlight>{"\n"}
+          {"  "}
+          <span className="text-slate-500"># customized op</span>{"\n"}
+          {"\n"}
+          {"  "}
+          o = <Highlight color="purple">attention</Highlight>(
+          q, <Highlight color="purple">k[indices]</Highlight>,{" "}
+          <Highlight color="purple">v[indices]</Highlight>){"\n"}
+          {"  "}
+          <span className="text-slate-500">
+            # call attention backend & memory
+          </span>{"\n"}
+          {"  "}
+          <span className="text-slate-500">
+            # manager in the serving system
+          </span>{"\n"}
+          {"\n"}
+          {"  "}
+          <span className="text-blue-400">return</span> o{"\n"}
+        </pre>
+      </div>
+    </div>
+  );
+};
 
-                            &nbsp;&nbsp;score = <Highlight color="green">torch.mv(centroids, q)</Highlight><br/>
-                            &nbsp;&nbsp;indices = <Highlight color="green">torch.topk(score)</Highlight><br/>
-                            &nbsp;&nbsp;<span className="text-slate-500">#customized op</span><br/>
-
-                            &nbsp;&nbsp;o = <Highlight color="purple">attention</Highlight>(q, <Highlight color="purple">k[indices]</Highlight>, <Highlight color="purple">v[indices]</Highlight>)<br/>
-                            &nbsp;&nbsp;<span className="text-slate-500">#call attention backend & memory</span><br/>
-                            &nbsp;&nbsp;<span className="text-slate-500">#manager in serving system</span><br/>
-
-                            &nbsp;&nbsp;<span className="text-blue-400">return</span> o<br/>
-                      </pre>
-                  </div>
-              </div>
-          );
-      };
       // --- END NEW COMPONENT ---
       const VortexArchitectureDiagram = () => (
         <div className="my-10 bg-slate-900 rounded-xl overflow-hidden shadow-2xl ring-1 ring-slate-900/5 text-slate-300">
